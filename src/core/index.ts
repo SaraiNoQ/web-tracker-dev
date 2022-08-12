@@ -1,6 +1,8 @@
 import { DefaultOptons, Options, TrackerConfig, MouseEventList, reportTrackerData } from "../types/index";
 import { createHistoryEvent } from "../utils/pv";
-import { timing } from "../utils/timing";
+import { timing, saveTiming } from "../lib/timing";
+import FMPTiming from "../lib/fmp";
+
 
 export default class Tracker {
   public data: Options;
@@ -96,6 +98,11 @@ export default class Tracker {
     if (timingData) {
       this.reportTrackerWithoutConstructor(timingData)
       localStorage.removeItem('timing')
+    }
+    const performaceData = localStorage.getItem('performace') || undefined
+    if (performaceData) {
+      this.reportTrackerWithoutConstructor(performaceData)
+      localStorage.removeItem('performace')
     }
   }
 
@@ -242,6 +249,7 @@ export default class Tracker {
    * 安装监听器
    */
   private installTracker (): void {
+    new FMPTiming()
     if (this.data.historyTracker) {
       this.captureEvents(['pushState', 'replaceState', 'popstate'], 'history-pv')
     }
@@ -258,7 +266,7 @@ export default class Tracker {
       this.unloadTracker()
     }
     if (this.data.timeTracker && this.data.lazyReport) {
-      timing()
+      timing(saveTiming)
     }
   }
 }

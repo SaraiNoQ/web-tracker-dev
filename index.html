@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,19 @@
 </head>
 <body>
   <script src="./dist/index.js"></script>
+
+  <!-- <script>
+    const observer = new PerformanceObserver((list) => {
+      for(const entry of list.getEntries()){
+        console.groupCollapsed(entry.name);
+        console.log(entry.entryType);
+        console.log(entry.startTime);
+        console.log(entry.duration);
+        console.groupEnd(entry.name);
+      }
+    }) 
+    observer.observe({entryTypes:['longtask','frame','navigation','resource','mark','measure','paint']});
+ </script> -->
 
   <button data-tracker-key="btn">btn to add</button>
   <button id="tracker-history">history</button>
