@@ -1,6 +1,6 @@
 {
   "name": "snq-tracker",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "An easy web monitor tool based on rollup",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

@@ -32,9 +32,9 @@ export interface TimingData {
  */
 export interface PerformaceData {
   firstPaint: number | undefined,
-  firstContentfulPaint?: number | undefined,
+  firstContentfulPaint: number | undefined,
   firstMeaningfulPaint?: number | undefined,
-  largestContentfulPaint?: number | undefined,
+  largestContentfulPaint: number | undefined,
   timeToInteractive: number | undefined,
 }
 

@@ -57,3 +57,41 @@ mounted () {
 │
 └── index.html #测试页面
 ```
+
+## 数据结构
+
+### Time
+
+```
+{
+  "event": "timing-data",
+  "targetKey": "timing",
+  "data": {
+    "connectTime": number,
+    "ttfbTime": number,
+    "responseTime": number,
+    "parseDOMTime": number,
+    "domContentLoadedTime": number,
+    "domContentLoaded": number,
+    "loadTime": number,
+    "parseDNSTime": number,
+    "domReadyTime": number,
+  },
+}
+```
+
+### Performance
+
+```
+{
+  "event": "performance-data",
+  "targetKey": "performance",
+  "data": {
+    "firstPaint": number,
+    "firstContentfulPaint": number,
+    "largestContentfulPaint": number,
+    "timeToInteractive": number,
+  },
+  "firstMeaningfulPaint": number,
+}
+```
