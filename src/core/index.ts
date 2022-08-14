@@ -1,6 +1,6 @@
 import { DefaultOptons, Options, TrackerConfig, MouseEventList, reportTrackerData } from "../types/index";
 import { createHistoryEvent } from "../utils/pv";
-import { timing, saveTiming } from "../lib/timing";
+import { timing } from "../lib/timing";
 import FMPTiming from "../lib/fmp";
 
 
@@ -266,7 +266,7 @@ export default class Tracker {
       this.unloadTracker()
     }
     if (this.data.timeTracker && this.data.lazyReport) {
-      timing(saveTiming)
+      timing()
     }
   }
 }
