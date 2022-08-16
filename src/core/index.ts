@@ -152,6 +152,7 @@ export default class Tracker {
    */
   private jsErrorEvent(): void {
     window.addEventListener('error', e => {
+      if (this.isResourseError(e)) return
       if (this.data.lazyReport) {
         this.saveTracker({
           event: 'js-error',
@@ -176,6 +177,38 @@ export default class Tracker {
         }
       })
     })
+  }
+
+  /**
+   * 资源错误
+   * @param event 事件对象
+   * @returns boolean 是否是资源错误
+   */
+  private isResourseError (event: ErrorEvent): boolean {
+    // if (event.target && (event.target.src || event.target.href))
+    const target = event.target || event.srcElement;
+    const isElementTarget = target instanceof HTMLScriptElement || target instanceof HTMLLinkElement || target instanceof HTMLImageElement;
+    if (!isElementTarget) return false;
+    if (this.data.lazyReport) {
+      this.saveTracker({
+        event: 'resource-error',
+        targetKey: 'resource-error',
+        data: {
+          // @ts-ignore
+          url: target.src || target.href,
+        }
+      })
+    } else {
+      this.sendTracker({
+        event: 'resource-error',
+        targetKey: 'resource-error',
+        data: {
+          // @ts-ignore
+          url: target.src || target.href,
+        }
+      })
+    }
+    return true
   }
 
   /**

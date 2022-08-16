@@ -11,7 +11,7 @@ export function saveTiming(firstContentfulPaint?: number, largestContentfulPaint
     fetchStart,
     connectStart,
     connectEnd,
-    requestStart,
+    // requestStart,
     responseStart,
     responseEnd,
     domLoading,
